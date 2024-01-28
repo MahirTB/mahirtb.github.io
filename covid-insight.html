@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://www.linkedin.com/in/mahirtb/" target="_blank"><img src="assets/linkedin icon.png" alt=""></a>
+    </div>
+
+    <div class="container">
+        <div class="pro-title-text">
+            <h1>COVID-19 Insights</h1>
+            <p>I downloaded a COVID dataset from Kaggle, and it turned out to be quite extensive. Most columns were fine, but there were null values in some. I decided to clean it up by removing those null columns and started my analysis. While getting total cases and total deaths was straightforward using Power BI, calculating metrics like vaccinations per hundred people and death rates proved to be a bit tricky.
+               The nature of the dataset was such that it provided daily updates, resulting in numerous duplicates. To streamline the data, I undertook manipulations to derive the total population and the number of people vaccinated for each country.
+            </p>
+            <div class="covid-img-cont">
+                <img class="covid-img" src="assets/covid-script.png" alt="">
+                <img class="covid-img" src="assets/popvac sheet.png" alt="">
+            </div>
+            
+        </div>
+
+        <div class="project-report">
+            <p>After obtaining the data, I created a new sheet where I calculated the vaccination percentage of people for each country and later used it
+                for visualization. <br>
+                Next up, I needed to determine the death rate (how many people are dying per hundred cases) for each country. 
+                Using DAX, I created a new table specifically to calculate the death rate.
+            </p>
+            <div class="temp"><img class="covid-img" src="assets/death-ratio-dax.png" alt=""></div>
+            
+            <div>
+                <br>
+                <p>
+                    Now that I have all the metrics, I dived into visualization using Power BI.
+                </p>
+                <img class="project-img" src="assets/covid-dashboard.png" alt="">
+            </div>
+            <div><br>
+                <p>
+                    Now, if I want to view the data specific to my country, Bangladesh, I can use the country filter. Additionally, I have the flexibility 
+                    to explore data for any particular year as needed.
+                </p>
+                <img class="project-img" src="assets/covid-bd.png" alt="">
+            </div>    
+    </div>
+</body>
+</html>

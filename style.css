@@ -136,6 +136,26 @@ body {
 }
 
 
+.covid-img-cont{
+    display: flex;
+    margin-left: 13%;
+    margin-right: 13%;
+    margin-bottom: 10px;
+    margin-top: 5%;
+    justify-content: center;
+}
+.covid-img{
+    max-height: 60%;
+    max-width: 60%;
+    justify-content: center;
+}
+.temp{
+    display: flex;
+    justify-content: center;
+}
+
+
+
 @media only screen and (max-width: 600px){
     .text{
         display: flex;
