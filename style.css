@@ -27,7 +27,9 @@ body {
     margin: 0 25px;
 }
 .navbar a:hover {
-    color: #c0ced1;
+    color: #c0ced1;}
+    .current-page {
+    border-bottom: 2px solid white; /* Add a white bottom border for the current page */
 }
 
 .mtb:hover {
