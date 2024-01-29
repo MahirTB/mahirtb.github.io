@@ -31,17 +31,30 @@ body {
     .current-page {
     border-bottom: 2px solid white; /* Add a white bottom border for the current page */
 }
-
 .mtb:hover {
     color: #26778e;
+}
 
+.dp-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.soc-icon{
+    display: flex;
+    gap: 30px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.si-img{
+    max-width: 30px;
+    max-height: 30px;
 }
 .text{
     display: flex;
     margin-left: 13%;
     margin-right: 13%;
-    margin-bottom: 10px;
-    margin-top: 10px;
     text-align: justify;
 }
 .mtb{
@@ -53,6 +66,10 @@ body {
     font-size: 20px;
 }
 .home-page-hi{
+    color: #659dbd;
+}
+
+.my-pro-head{
     color: #659dbd;
 }
 .edu-skill{
@@ -71,9 +88,8 @@ body {
     max-height: 290px;
     margin-left: 40px;
     margin-top: 25px;
+    border-radius: 50px;
 }
-
-
 
 
 .pro-text{
@@ -81,7 +97,7 @@ body {
     margin-left: 13%;
     margin-right: 13%;
     margin-bottom: 10px;
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: justify;
 }
 .pro-link{
