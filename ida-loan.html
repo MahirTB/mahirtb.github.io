@@ -16,7 +16,61 @@
     </div>
 
     <div class="container">
-          <h1>Updating......</h1>
+        <div class="pro-title-text">
+            <h1>IDA Loan Report</h1>
+            <p>I downloaded the IDA Statement of Credits and Grants dataset from the world bank website. I made a database and created two tables from the dataset and loaded it into
+                SQL Server Management Studio as two tables.
+            </p>
+            <img class="ida-1"  src="assets/ida-intro.png" alt="">
+            <p>Seeing some data from both the tables</p>
+            <div class="covid-img-cont">
+                <img class="covid-img" src="assets/ida-q1-cleaned.png" alt="">
+                <img class="covid-img" src="assets/ida-q2.png" alt="">
+            </div>   
+        </div>
+
+        <div class="project-report">
+            <p>Joined both the table to get overall information.
+            </p>
+            <div class="temp"><img class="covid-img" src="assets/ida-q3.png" alt=""></div>
+            
+            <div>
+                <br>
+                <p>
+                    Something felt fishy about this data. Because I was assuming that the Credit Number and Project ID both will be unique. Like for each Project ID there will be
+                    one Credit Number. But the number of rows for both the column weren't same. So I decided to check and realized that for each Project ID there was multiple Credit Number.
+                </p>
+                <img class="project-img" src="assets/ida-pc.png" alt="">
+            </div>
+
+            <div><br>
+                <p>
+                    There was so many duplicate values so wanted to see only the unique values using a CTE.
+                </p>
+                <img class="project-img" src="assets/ida-unq.png" alt="">
+            </div>
+
+            <div><br>
+                <p>
+                    I wanted to see all the loans countrywise.
+                </p>
+                <img class="project-img" src="assets/ida-q-by-country.png" alt="">
+            </div>
+
+            <div><br>
+                <p>
+                    Checking how many projects got grants from IDA for each country.
+                </p>
+                <img class="project-img" src="assets/ida-projectcount.png" alt="">
+            </div>
+
+            <div><br>
+                <p>
+                    Finally I built a Power BI dashboard to visualize key insights.
+                </p>
+                <img class="project-img" src="assets/ida-dashboard.png" alt="">
+            </div>
+    </div>
     </div>
 </body>
 </html>
