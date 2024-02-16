@@ -162,9 +162,14 @@ body {
     margin-top: 5%;
     justify-content: center;
 }
-.covid-img{
+.covid-img2{
     max-height: 60%;
-    max-width: 60%;
+    max-width: 50%;
+    justify-content: center;
+}
+.covid-img1{
+    max-height: 60%;
+    max-width: 100%;
     justify-content: center;
 }
 .temp{
