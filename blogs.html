@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Mahir's Portfolio</title>
+    <title>Blogs - Mahir's Portfolio</title>
     <link rel="stylesheet" href="styles/main.css?v=27">
 </head>
 
@@ -12,13 +12,13 @@
     <div class="container">
         <header>
             <div>
-                <h1>Projects</h1>
-                <h3>What I've been working on</h3>
+                <h1>Blogs</h1>
+                <h3>My thoughts and writings</h3>
             </div>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="blogs.html">Blogs</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html" class="active">Blogs</a>
                 <a href="editor.html" id="editor-link" style="display: none;">+</a>
             </nav>
         </header>
@@ -26,12 +26,12 @@
         <main>
             <!-- List View -->
             <div id="content-list">
-                <p>Loading projects...</p>
+                <p>Loading blogs...</p>
             </div>
 
             <!-- Detail View -->
             <div id="content-detail" style="display: none;">
-                <a href="projects.html" class="btn" style="margin-bottom: 20px;">&larr; Back to Projects</a>
+                <a href="blogs.html" class="btn" style="margin-bottom: 20px;">&larr; Back to Blogs</a>
                 <article>
                     <h2 id="detail-title"></h2>
                     <small id="detail-date" style="display: block; margin-bottom: 20px; opacity: 0.6;"></small>
@@ -48,8 +48,8 @@
     <script src="scripts/loader.js?v=3"></script>
     <script src="scripts/admin-check.js?v=2"></script>
     <script>
-        // Load projects data
-        loadContent('projects');
+        // Load blogs data
+        loadContent('blogs');
     </script>
 </body>
 
