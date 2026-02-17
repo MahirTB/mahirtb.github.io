@@ -39,7 +39,7 @@ async function loadContent(type) {
                     const editBtn = document.createElement('a');
                     // Remove 's' from type (blogs->blog) for editor
                     const editorType = type.endsWith('s') ? type.slice(0, -1) : type;
-                    editBtn.href = `editor.html?type=${editorType}&id=${item.id}`;
+                    editBtn.href = `editor?type=${editorType}&id=${item.id}`;
                     editBtn.innerText = 'Edit Post';
                     editBtn.className = 'btn';
                     editBtn.style.marginRight = '10px';
@@ -63,7 +63,7 @@ async function loadContent(type) {
                                 });
                                 if (res.ok) {
                                     alert('Deleted!');
-                                    window.location.href = type + '.html';
+                                    window.location.href = type;
                                 } else {
                                     alert('Failed to delete');
                                 }
@@ -88,7 +88,7 @@ async function loadContent(type) {
             // Show List
             if (data.length === 0) {
                 if (isAdmin) {
-                    container.innerHTML = '<p>No content yet. Use the <a href="editor.html">Editor</a> to add some.</p>';
+                    container.innerHTML = '<p>No content yet. Use the <a href="editor">Editor</a> to add some.</p>';
                 } else {
                     container.innerHTML = '<p>No content yet.</p>';
                 }

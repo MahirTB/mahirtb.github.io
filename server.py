@@ -12,6 +12,32 @@ os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(IMAGES_DIR, exist_ok=True)
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        # Handle clean URLs
+        path, _, query = self.path.partition('?')
+        
+        # Redirect .html to clean URL (except index.html -> /)
+        if path.endswith('.html'):
+            new_path = path[:-5]
+            if new_path.endswith('/index'):
+                new_path = new_path[:-5] # /index -> /
+            
+            self.send_response(301)
+            self.send_header('Location', new_path + ('?' + query if query else ''))
+            self.end_headers()
+            return
+            
+        # If it's a clean URL (no extension), try finding .html
+        # Remove leading slash for os.path check
+        clean_path = path[1:] if path.startswith('/') else path
+        
+        if '.' not in os.path.basename(path) and not path.endswith('/'):
+             if os.path.exists(clean_path + '.html'):
+                 path += '.html'
+                 self.path = path + ('?' + query if query else '')
+                 
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
+
     def do_POST(self):
         if self.path == '/save-post':
             content_length = int(self.headers['Content-Length'])

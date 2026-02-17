@@ -2,9 +2,9 @@
   {
     "type": "project",
     "title": "Automated Weather Pipeline for Dhaka",
-    "summary": "Tried pulling data from an API. Stored the data as Parquet and then load and developed a Power BI dashboard.",
+    "summary": "Tried pulling data from an API, stored the data as Parquet and then load and developed a Power BI dashboard.",
     "content": "<div style=\"text-align: justify;\">I wanted to move beyond static datasets from Kaggle and work with something \"live.\" I decided to build an automated pipeline that pulls real-time weather data for Dhaka using the Open-Meteo API. The raw data came in JSON format, which was quite extensive but needed structure to be useful. While fetching the data was straightforward using Python\u2019s requests library, managing the storage efficiently proved to be a bit tricky. I didn't want to just dump everything into a CSV and create a mess. To streamline the process, I used Pandas to clean the data and filter for specific conditions (like temperatures above 20\u00b0C). Instead of standard CSVs, I decided to save the output as Parquet files. This optimized the storage significantly and preserved the data types, which saved me from having to re-cast columns later in Power BI.</div><div style=\"text-align: center;\"><img src=\"images/etl_notebook.png\" style=\"max-width: 100%; height: auto; margin-top: 10px; margin-bottom: 10px;\"></div><div style=\"text-align: justify;\">Now that I had optimized, structural data, I dived into visualization using Power BI. Since I used Parquet, the connection was seamless. I created a dynamic dashboard that doesn't just show a static history. Using relative date filtering and time-binning, I can now see specific hourly trends for \"Today\" alongside a 3-day forecast of maximum and minimum temperatures. It gives me an instant snapshot of the weather right now, without needing to manually refresh or clean a spreadsheet.</div><div style=\"text-align: center;\"><img src=\"images/etl_pbi.png\" style=\"max-width: 100%; height: auto; margin-top: 10px; margin-bottom: 10px;\"></div>",
-    "savedAt": "2025-11-23T06:03:29.455Z",
+    "savedAt": "2026-02-17T17:23:51.586Z",
     "id": 3,
     "date": "2025-11-23"
   },
@@ -17,7 +17,6 @@
     "id": 2,
     "date": "2024-03-19"
   },
-  
   {
     "type": "project",
     "title": "Covid-19 Insights - My First Data Analytics Project",

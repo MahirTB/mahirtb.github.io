@@ -70,6 +70,7 @@ nav {
   gap: 20px;
   /* Increased gap for underline style */
   align-items: center;
+  border: 1px solid #6B8E6B;
 }
 
 nav a {
