@@ -26,7 +26,20 @@ body {
   padding: 20px;
 }
 
+
+a {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 /* Animations */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
