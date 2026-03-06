@@ -43,14 +43,14 @@ async function loadContent(type) {
                     editBtn.innerText = 'Edit Post';
                     editBtn.className = 'btn';
                     editBtn.style.marginRight = '10px';
-                    editBtn.style.backgroundColor = '#6B8E6B'; // Match theme
 
                     // Delete Button
                     const deleteBtn = document.createElement('button');
                     deleteBtn.innerText = 'Delete Post';
                     deleteBtn.id = 'delete-btn';
                     deleteBtn.className = 'btn';
-                    deleteBtn.style.backgroundColor = '#e57373';
+                    deleteBtn.style.background = '#c0392b';
+                    deleteBtn.style.borderColor = '#c0392b';
                     deleteBtn.style.color = 'white';
 
                     deleteBtn.onclick = async () => {
@@ -95,12 +95,12 @@ async function loadContent(type) {
                 return;
             }
 
-            container.innerHTML = data.map(item => `
+            container.innerHTML = data.map((item, index) => `
         <div class="card">
-          <h3><a href="?id=${item.id}" style="text-decoration: none; color: inherit;">${item.title}</a></h3>
           <small>${item.date || ''}</small>
+          <h3><a href="?id=${item.id}">${item.title}</a></h3>
           <p>${item.summary || ''}</p>
-          <a href="?id=${item.id}" class="btn" style="margin-top: 10px; font-size: 0.8em;">Read More</a>
+          <a href="?id=${item.id}" class="btn" style="margin-top: 16px;">Read More &rarr;</a>
         </div>
       `).join('');
 

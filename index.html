@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahir's Portfolio</title>
-    <link rel="stylesheet" href="styles/main.css?v=27">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Mahir Tajwar Bhuiyan — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css?v=30">
     <link rel="icon" type="image/png" href="images/mtb_logo_trimmed.png">
 </head>
 
@@ -27,78 +31,288 @@
         </header>
 
         <main id="content">
-            <section id="about">
+
+            <!-- Hero eyebrow -->
+            <section style="padding: 24px 0 48px; border-bottom: 1px solid var(--rule);">
+                <p
+                    style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+                    <span style="display: inline-block; width: 24px; height: 1px; background: var(--accent);"></span>
+                    Data Engineer &amp; Analyst
+                </p>
+                <h1 style="font-size: clamp(2.6rem, 5vw, 4.2rem); margin-bottom: 20px;">
+                    Bridging raw data<br>
+                    <em style="font-style: italic; color: var(--accent);">to clear insight.</em>
+                </h1>
+                <p
+                    style="font-size: 1rem; color: var(--ink-muted); max-width: 500px; line-height: 1.8; margin-bottom: 32px;">
+                    3+ years building pipelines, models, and the stories data tells.
+                    Looking for the next challenge where engineering meets analysis.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span
+                        style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent-lt); color: var(--accent); border: 1px solid #D4B896; padding: 5px 12px;">SQL
+                        · Python · dbt</span>
+                    <span
+                        style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent-lt); color: var(--accent); border: 1px solid #D4B896; padding: 5px 12px;">Snowflake
+                        · Spark · Databricks</span>
+                    <span
+                        style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent-lt); color: var(--accent); border: 1px solid #D4B896; padding: 5px 12px;">Power
+                        BI · Metabase</span>
+                </div>
+            </section>
+
+            <!-- Stats row -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule);">
+                <div style="padding: 28px 0; border-right: 1px solid var(--rule);">
+                    <div
+                        style="font-family: var(--font-serif); font-size: 2.4rem; font-weight: 400; line-height: 1; margin-bottom: 6px;">
+                        3+</div>
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);">
+                        Years in Data</div>
+                </div>
+                <div style="padding: 28px 28px; border-right: 1px solid var(--rule);">
+                    <div
+                        style="font-family: var(--font-serif); font-size: 2.4rem; font-weight: 400; line-height: 1; margin-bottom: 6px;">
+                        10+</div>
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);">
+                        Projects Shipped</div>
+                </div>
+                <div style="padding: 28px 28px;">
+                    <div
+                        style="font-family: var(--font-serif); font-size: 2.4rem; font-weight: 400; line-height: 1; margin-bottom: 6px;">
+                        ∞</div>
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);">
+                        Rows Processed</div>
+                </div>
+            </div>
+
+            <!-- About -->
+            <section id="about" class="section">
+                <div class="section-header">
+                    <span class="section-num">01</span>
+                    <h2>About Me</h2>
+                </div>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>Hi! I'm <strong style="color: #6B8E6B;">Mahir</strong>. After 3+ years as a Data Analyst, I
-                            realized I had a "technical itch" that a dashboard couldn’t scratch.
+                        <p>Hi! I'm <strong>Mahir</strong>. After 3+ years as a Data Analyst, I
+                            realized I had a "technical itch" that a dashboard couldn't scratch.
                             I found myself more excited about fixing a broken data flow than building another slide
                             deck, so I decided to pivot. I'd love to do a bit of engineering along with analytics.</p>
-
-                        <p>I know finding the right fit takes time, but I’m enjoying the hustle. I’m looking for my next
+                        <p>I know finding the right fit takes time, but I'm enjoying the hustle. I'm looking for my next
                             challenge where I can bridge the gap between messy raw data and clear, actionable insights.
-                            If you’re building something meaningful, I’d love to be part of it.</p>
+                            If you're building something meaningful, I'd love to be part of it.</p>
+                        <div class="social-links" style="display: flex; gap: 16px; margin-top: 20px;">
+                            <a href="https://www.linkedin.com/in/mahirtb/" target="_blank"><strong>LinkedIn</strong>
+                                ↗</a>
+                            <a href="https://github.com/MahirTB" target="_blank"><strong>GitHub</strong> ↗</a>
+                            <a href="https://www.facebook.com/mahir.tajwar.14/"
+                                target="_blank"><strong>Facebook</strong> ↗</a>
+                        </div>
                     </div>
-
                     <div class="about-image-card">
                         <img src="images/profile_image.jpg" alt="Mahir Tajwar Bhuiyan" class="profile-pic">
-                        <div class="social-links">
-                            <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/in/mahirtb/" target="_blank" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
-                            </a>
-                            <!-- GitHub -->
-                            <a href="https://github.com/MahirTB" target="_blank" aria-label="GitHub">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </a>
-                            <!-- Facebook/Social (Generic) -->
-                            <a href="https://www.facebook.com/mahir.tajwar.14/" target="_blank" aria-label="Social">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692 1.002 0 1.971.077 1.971.077v2.923z" />
-                                </svg>
-                            </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills / Stack -->
+            <section id="skills" class="section">
+                <div class="section-header">
+                    <span class="section-num">02</span>
+                    <h2>Stack</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+                    <div
+                        style="padding: 18px 28px 18px 0; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">
+                            Query & Transform</div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">SQL</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">dbt</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Spark</span>
+                        </div>
+                    </div>
+                    <div style="padding: 18px 0 18px 28px; border-bottom: 1px solid var(--rule);">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">
+                            Language</div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Python</span>
+                        </div>
+                    </div>
+                    <div style="padding: 18px 28px 18px 0; border-right: 1px solid var(--rule);">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">
+                            Platforms</div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Snowflake</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Databricks</span>
+                        </div>
+                    </div>
+                    <div style="padding: 18px 0 18px 28px;">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">
+                            Visualisation</div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Power
+                                BI</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface); border: 1px solid var(--rule); padding: 3px 10px;">Metabase</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="skills" style="margin-top: 40px;">
-                <h2>Skills</h2>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <span class="btn" style="pointer-events: none;">SQL</span>
-                    <span class="btn" style="pointer-events: none;">Python</span>
-                    <span class="btn" style="pointer-events: none;">dbt</span>
-                    <span class="btn" style="pointer-events: none;">Spark</span>
-                    <span class="btn" style="pointer-events: none;">Snowflake</span>
-                    <span class="btn" style="pointer-events: none;">Databricks</span>
-                    <span class="btn" style="pointer-events: none;">Power BI</span>
-                    <span class="btn" style="pointer-events: none;">Metabase</span>
+            <!-- Experience -->
+            <section id="experience" class="section">
+                <div class="section-header">
+                    <span class="section-num">03</span>
+                    <h2>Experience</h2>
+                </div>
+
+                <!-- Company 1 -->
+                <div
+                    style="display: grid; grid-template-columns: 160px 1fr; gap: 0 40px; padding: 28px 0; border-bottom: 1px solid var(--rule);">
+                    <div>
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">
+                            Previous</div>
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-muted); margin-top: 4px;">
+                            Aug 2024 — Aug 2025</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
+                            <h3 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 300;">Data
+                                Analyst</h3>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--accent);">Green
+                                Delta Insurance PLC</span>
+                        </div>
+                        <p style="font-size: 0.88rem; color: var(--ink-muted); line-height: 1.75;">Developed and
+                            optimised SQL queries to extract, clean, and transform raw operational data from MSSQL.
+                            Collaborated with stakeholders to model data schemas for ad-hoc analysis, and built dynamic
+                            Power BI dashboards that surfaced actionable KPIs for management.</p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px;">SQL</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px;">Python</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px;">Power
+                                BI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company 2 -->
+                <div style="display: grid; grid-template-columns: 160px 1fr; gap: 0 40px; padding: 28px 0;">
+                    <div>
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">
+                            Previous</div>
+                        <div
+                            style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-muted); margin-top: 4px;">
+                            Dec 2021 — Apr 2024</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
+                            <h3 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 300;">Data
+                                Analyst</h3>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--accent);">GirlsDrobe</span>
+                        </div>
+                        <p style="font-size: 0.88rem; color: var(--ink-muted); line-height: 1.75;">Analysed historical
+                            sales data to identify high-performing products, contributing to a strategy that grew sales
+                            by 50%. Optimised inventory procurement by spotting seasonal buying trends, and built Looker
+                            Studio dashboards to visualise performance metrics for the team.</p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px;">
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px;">Google
+                                Sheets</span>
+                            <span
+                                style="font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px;">Looker
+                                Studio</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section id="resume" style="margin-top: 40px;">
-                <h2>Resume</h2>
-                <p>Download my resume or view it online.</p>
-                <a href="https://drive.google.com/file/d/1nxLCcrIM3JEBmxUmiEQuAoStf_qmgAG8/view?usp=sharing"
-                    target="_blank" class="btn" style="margin-top: 8px;">View Resume</a>
+            <section id="resume" class="section" style="border-bottom: none;">
+                <div class="section-header">
+                    <span class="section-num">04</span>
+                    <h2>Résumé</h2>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--ink-muted); margin-bottom: 20px;">Download or view my résumé
+                    online.</p>
+                <button class="btn" onclick="openResumeModal()">View Résumé</button>
             </section>
+
         </main>
 
-        <footer style="margin-top: 60px; font-size: 0.8rem; text-align: center; opacity: 0.7;">
-            &copy; 2026 MahirTB.
+        <footer>
+            <span>&copy; 2026 Mahir Tajwar Bhuiyan</span>
+            <span>Data · Engineering · Analytics</span>
         </footer>
     </div>
     <script src="scripts/admin-check.js?v=2"></script>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" onclick="closeResumeModal(event)"
+        style="display:none; position:fixed; inset:0; background:rgba(24,24,26,0.7); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+        <div
+            style="position:relative; width:min(860px,92vw); height:88vh; background:var(--bg); border:1px solid var(--rule); display:flex; flex-direction:column;">
+            <!-- Modal header -->
+            <div
+                style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid var(--rule); flex-shrink:0;">
+                <span
+                    style="font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted);">Résumé
+                    — Mahir Tajwar Bhuiyan</span>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <a href="https://drive.google.com/file/d/1nxLCcrIM3JEBmxUmiEQuAoStf_qmgAG8/view?usp=sharing"
+                        target="_blank"
+                        style="font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-muted); border-bottom:1px solid var(--rule); padding-bottom:1px;">Open
+                        in Drive ↗</a>
+                    <button onclick="closeResumeModal()"
+                        style="background:none; border:none; cursor:pointer; font-family:var(--font-mono); font-size:1rem; color:var(--ink-muted); line-height:1; padding:0 4px;"
+                        aria-label="Close">&times;</button>
+                </div>
+            </div>
+            <!-- PDF iframe -->
+            <iframe src="https://drive.google.com/file/d/1nxLCcrIM3JEBmxUmiEQuAoStf_qmgAG8/preview"
+                style="flex:1; width:100%; border:none;" allow="autoplay"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openResumeModal() {
+            const m = document.getElementById('resume-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeResumeModal(e) {
+            // Close if clicking backdrop (not the inner card)
+            if (e && e.target !== document.getElementById('resume-modal')) return;
+            const m = document.getElementById('resume-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        // Close on Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeResumeModal();
+        });
+    </script>
 </body>
 
 </html>

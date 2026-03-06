@@ -4,44 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Editor - Mahir's Portfolio</title>
-    <link rel="stylesheet" href="styles/main.css?v=28">
+    <title>Editor — Mahir Tajwar Bhuiyan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css?v=30">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/mtb_logo_trimmed.png">
-    <style>
-        /* Minimal Rich Text Toolbar */
-        .toolbar {
-            margin-bottom: 10px;
-            padding: 5px;
-            background: var(--secondary-bg);
-            border: 1px solid var(--accent-color);
-            display: flex;
-            gap: 5px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .toolbar button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        .toolbar button:hover {
-            background: var(--accent-color);
-        }
-    </style>
 </head>
 
 <body>
     <div class="container">
         <header>
             <div>
-                <h1>Editor</h1>
+                <h1 style="font-size: 1.5rem;">Editor</h1>
                 <p>Create new content</p>
             </div>
             <nav>
@@ -51,8 +29,9 @@
             </nav>
         </header>
 
-        <main>
+        <main style="padding-top: 48px;">
             <div id="editor-form-container">
+
                 <div class="input-group">
                     <label for="type">Content Type</label>
                     <select id="type">
@@ -67,7 +46,7 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="summary">Summary (Short description)</label>
+                    <label for="summary">Summary</label>
                     <input type="text" id="summary" placeholder="One sentence summary...">
                 </div>
 
@@ -76,13 +55,13 @@
                     <button onclick="document.execCommand('bold',false,null)"><i class="fas fa-bold"></i></button>
                     <button onclick="document.execCommand('italic',false,null)"><i class="fas fa-italic"></i></button>
                     <button onclick="document.execCommand('formatBlock',false,'<h3>')">H3</button>
-                    <button onclick="document.execCommand('justifyLeft',false,null)" title="Align Left"><i
+                    <button onclick="document.execCommand('justifyLeft',false,null)"><i
                             class="fas fa-align-left"></i></button>
-                    <button onclick="document.execCommand('justifyCenter',false,null)" title="Align Center"><i
+                    <button onclick="document.execCommand('justifyCenter',false,null)"><i
                             class="fas fa-align-center"></i></button>
-                    <button onclick="document.execCommand('justifyRight',false,null)" title="Align Right"><i
+                    <button onclick="document.execCommand('justifyRight',false,null)"><i
                             class="fas fa-align-right"></i></button>
-                    <button onclick="document.execCommand('justifyFull',false,null)" title="Values"><i
+                    <button onclick="document.execCommand('justifyFull',false,null)"><i
                             class="fas fa-align-justify"></i></button>
                     <button onclick="document.execCommand('createLink',false,prompt('Enter URL:'))"><i
                             class="fas fa-link"></i></button>
@@ -90,14 +69,14 @@
                             class="fas fa-image"></i></button>
                 </div>
                 <input type="file" id="imageInput" accept="image/*" style="display: none;">
-                <!-- Editable Div acting as rich text editor -->
                 <div id="editor" class="editor-container" contenteditable="true">
                     <p>Start writing here...</p>
                 </div>
 
                 <div style="margin-top: 20px;">
                     <button id="saveBtn" class="btn">Save Content</button>
-                    <span id="status" style="margin-left: 10px; font-weight: bold; color: var(--accent-color);"></span>
+                    <span id="status"
+                        style="margin-left: 14px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);"></span>
                 </div>
             </div>
         </main>

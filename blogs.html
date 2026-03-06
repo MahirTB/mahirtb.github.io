@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - Mahir's Portfolio</title>
-    <link rel="stylesheet" href="styles/main.css?v=27">
+    <title>Blogs — Mahir Tajwar Bhuiyan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css?v=30">
     <link rel="icon" type="image/png" href="images/mtb_logo_trimmed.png">
 </head>
 
@@ -13,7 +18,7 @@
     <div class="container">
         <header>
             <div>
-                <h1>Blogs</h1>
+                <h1 style="font-size: 1.5rem;">Blogs</h1>
                 <h3>My thoughts and writings</h3>
             </div>
             <nav>
@@ -26,32 +31,31 @@
 
         <main>
             <!-- List View -->
-            <div id="content-list">
-                <p>Loading blogs...</p>
+            <div id="content-list" style="padding-top: 48px;">
+                <p style="color: var(--ink-muted); font-family: var(--font-mono); font-size: 0.8rem;">Loading blogs...
+                </p>
             </div>
 
             <!-- Detail View -->
-            <div id="content-detail" style="display: none;">
-                <a href="blogs" class="btn" style="margin-bottom: 20px;">&larr; Back to Blogs</a>
+            <div id="content-detail" style="display: none; padding-top: 48px;">
+                <a href="blogs" class="btn" style="margin-bottom: 32px; display: inline-block;">&larr; Back</a>
                 <article>
                     <h2 id="detail-title"></h2>
-                    <small id="detail-date" style="display: block; margin-bottom: 20px; opacity: 0.6;"></small>
+                    <small id="detail-date" style="display: block; margin-bottom: 24px;"></small>
                     <div id="detail-body"></div>
                 </article>
             </div>
         </main>
 
-        <footer style="margin-top: 60px; font-size: 0.8rem; text-align: center; opacity: 0.7;">
-            &copy; 2026 Mahir TB.
+        <footer>
+            <span>&copy; 2026 Mahir Tajwar Bhuiyan</span>
+            <span>Data · Engineering · Analytics</span>
         </footer>
     </div>
 
     <script src="scripts/loader.js?v=3"></script>
     <script src="scripts/admin-check.js?v=2"></script>
-    <script>
-        // Load blogs data
-        loadContent('blogs');
-    </script>
+    <script>loadContent('blogs');</script>
 </body>
 
 </html>
