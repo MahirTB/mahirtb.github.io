@@ -317,11 +317,11 @@ h3 {
 }
 
 .profile-pic {
-  width: 180px;
-  height: 180px;
-  border-radius: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--rule);
+  border: 6px solid var(--accent-lt);
   filter: grayscale(15%);
 }
 
@@ -501,40 +501,214 @@ article #detail-body a:hover {
   color: var(--ink);
 }
 
+/* ── Hero Section Classes ── */
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 /* ── Responsive ── */
-@media (max-width: 768px) {
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
   body {
-    padding: 0 16px;
+    padding: 0 24px;
   }
 
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  nav {
-    gap: 16px;
-    flex-wrap: wrap;
+  .container {
+    max-width: 100%;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+  }
+}
+
+/* ── Mobile / Small Tablet (≤768px) ── */
+@media (max-width: 768px) {
+  body {
+    padding: 0 18px;
   }
 
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 0 18px;
+  }
+
+  header div h1 {
+    font-size: 1.25rem;
+  }
+
+  /* Nav wraps */
+  nav {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Hero heading */
+  h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    line-height: 1.15;
+  }
+
+  /* Hero section mobile padding */
+  .hero-section {
+    padding: 16px 0 32px !important;
+  }
+
+  /* Hero heading overrides inline style */
+  .hero-heading {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Hero tech tags — allow wrap, reduce padding */
+  .hero-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Stats row: 3-cols → 1 col stack */
+  .stats-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* For the inline stats div in index.html */
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  div[style*="grid-template-columns: repeat(3, 1fr)"]>div {
+    border-right: none !important;
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0 !important;
+  }
+
+  div[style*="grid-template-columns: repeat(3, 1fr)"]>div:last-child {
+    border-bottom: none;
+  }
+
+  /* Skills 2-col grid → 1-col */
+  div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  div[style*="grid-template-columns: repeat(2, 1fr)"]>div {
+    border-right: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Experience: fixed-width left col → stacked */
+  div[style*="grid-template-columns: 160px 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 20px 0 !important;
+  }
+
+  /* About grid */
   .about-grid {
     flex-direction: column;
-    gap: 28px;
+    gap: 24px;
   }
 
   .about-image-card {
     order: -1;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .profile-pic {
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Section spacing */
+  .section {
+    padding: 36px 0;
+  }
+
+  /* Social links */
+  .social-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Footer: stack */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 20px 0;
+  }
+
+  /* Resume modal */
+  #resume-modal>div {
+    width: 96vw !important;
+    height: 92vh !important;
+  }
+
+  /* Article detail view */
+  article h2#detail-title {
+    font-size: 1.5rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.68rem;
+  }
+}
+
+/* ── Small phones (≤480px) ── */
+@media (max-width: 480px) {
+  body {
+    padding: 0 14px;
+  }
+
+  header div h1 {
+    font-size: 1.1rem;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 0.65rem;
+  }
+
+  h1 {
+    font-size: clamp(1.65rem, 8vw, 2.2rem);
+  }
+
+  .section {
+    padding: 28px 0;
+  }
+
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+  }
+
+  .social-links a {
+    padding: 6px 12px;
+    font-size: 0.65rem;
+  }
+
+  footer {
+    gap: 4px;
+  }
+
+  /* Stats numbers smaller on tiny screens */
+  div[style*="grid-template-columns: repeat(3, 1fr)"] div[style*="font-size: 2.4rem"] {
+    font-size: 1.8rem !important;
   }
 }
