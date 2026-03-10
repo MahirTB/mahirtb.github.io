@@ -194,7 +194,7 @@ h3 {
   display: flex;
   align-items: baseline;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 
 .section-num {
@@ -202,6 +202,10 @@ h3 {
   font-size: 0.65rem;
   color: var(--ink-muted);
   letter-spacing: 0.08em;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
 }
 
 /* ── Cards ── */
@@ -508,6 +512,16 @@ article #detail-body a:hover {
   flex-wrap: wrap;
 }
 
+/* Remove inline top-padding to align gap with About Me Section */
+#skills > div:nth-of-type(2) > div:nth-child(1),
+#skills > div:nth-of-type(2) > div:nth-child(2) {
+  padding-top: 0 !important;
+}
+
+#experience > div:nth-of-type(2) {
+  padding-top: 0 !important;
+}
+
 /* ── Responsive ── */
 
 /* ── Tablet (≤1024px) ── */
@@ -603,6 +617,11 @@ article #detail-body a:hover {
     border-right: none !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+  
+  /* Stack 2nd item needs top padding back on mobile because columns stack */
+  #skills > div:nth-of-type(2) > div:nth-child(2) {
+    padding-top: 18px !important;
   }
 
   /* Experience: fixed-width left col → stacked */
