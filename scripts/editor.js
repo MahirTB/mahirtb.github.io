@@ -35,7 +35,67 @@ window.addEventListener('DOMContentLoaded', async () => {
             alert('Error loading item');
         }
     }
+
+    // Initialize Toolbar
+    initToolbar();
 });
+
+function initToolbar() {
+    const toolbar = document.querySelector('.toolbar');
+    const editor = document.getElementById('editor');
+
+    if (!toolbar || !editor) return;
+
+    toolbar.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-command]');
+        if (!btn) return;
+
+        const command = btn.getAttribute('data-command');
+        let value = btn.getAttribute('data-value') || null;
+
+        if (command === 'createLink') {
+            value = prompt('Enter URL:');
+            if (!value) return;
+        }
+
+        document.execCommand(command, false, value);
+        editor.focus();
+        updateToolbarState();
+    });
+
+    // Update toolbar on selection change
+    document.addEventListener('selectionchange', updateToolbarState);
+    editor.addEventListener('keyup', updateToolbarState);
+    editor.addEventListener('mouseup', updateToolbarState);
+}
+
+function updateToolbarState() {
+    const toolbar = document.querySelector('.toolbar');
+    if (!toolbar) return;
+
+    const buttons = toolbar.querySelectorAll('button[data-command]');
+    buttons.forEach(btn => {
+        const command = btn.getAttribute('data-command');
+        const value = btn.getAttribute('data-value');
+
+        let isActive = false;
+        try {
+            if (value) {
+                // For formatBlock like H3
+                isActive = document.queryCommandValue(command) === value || 
+                           document.queryCommandValue(command).toLowerCase() === value.replace(/[<>]/g, '').toLowerCase();
+            } else {
+                isActive = document.queryCommandState(command);
+            }
+        } catch (e) {}
+
+        if (isActive) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
 
 document.getElementById('saveBtn').addEventListener('click', async () => {
     const saveBtn = document.getElementById('saveBtn');
