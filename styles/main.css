@@ -1,30 +1,48 @@
 /* ============================================================
    MAHIR TB — PORTFOLIO
-   Theme: Modern Dark Mode (Glassmorphism & Neon Accents)
-   Fonts: Outfit (headings) · Fira Code (mono) · Inter (body)
+   Theme: Pearl White — Modern Editorial Light Mode
+   Fonts: Playfair Display (headings) · DM Sans (body) · Fira Code (mono)
    ============================================================ */
 
 /* ── Design Tokens ── */
 :root {
-  --bg: #5e4074;
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-hover: rgba(255, 255, 255, 0.1);
-  --ink: #f7f8ec;
-  --ink-muted: #cbb5e0;
-  --rule: rgba(247, 248, 236, 0.15);
-  --accent: #ffdfc4;
-  --accent-lt: #f5f5f5;
-  
-  --font-serif: 'Outfit', system-ui, sans-serif;
-  --font-mono: 'Fira Code', 'Courier New', monospace;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  /* Backgrounds */
+  --bg:              #F7F6F2;          /* warm pearl white */
+  --bg-surface:      #FFFFFF;          /* pure white cards */
+  --bg-subtle:       #F0EEE9;          /* slightly deeper for hover/dividers */
+  --surface:         rgba(255,255,255,0.7);
+  --surface-hover:   rgba(255,255,255,0.9);
+
+  /* Text */
+  --ink:             #1C1B19;          /* near-black, warm */
+  --ink-muted:       #6B6760;          /* warm mid-grey */
+  --ink-faint:       #B0ADA7;          /* very faint labels */
+
+  /* Accent — deep slate-indigo */
+  --accent:          #4B6CB7;          /* refined blue accent */
+  --accent-lt:       rgba(75,108,183,0.12);
+  --accent-dark:     #324D8A;
+
+  /* Borders */
+  --rule:            rgba(28,27,25,0.1);
+  --rule-strong:     rgba(28,27,25,0.2);
+
+  /* Typography */
+  --font-serif:      'Playfair Display', Georgia, serif;
+  --font-sans:       'DM Sans', system-ui, sans-serif;
+  --font-mono:       'Fira Code', 'Courier New', monospace;
 
   /* Legacy aliases (editor.html uses these) */
-  --bg-color: var(--bg);
-  --secondary-bg: rgba(255, 255, 255, 0.1);
-  --accent-color: var(--accent);
-  --text-color: var(--ink);
-  --font-main: var(--font-mono);
+  --bg-color:        var(--bg);
+  --secondary-bg:    var(--bg-subtle);
+  --accent-color:    var(--accent);
+  --text-color:      var(--ink);
+  --font-main:       var(--font-mono);
+
+  /* Shadows */
+  --shadow-sm:       0 1px 3px rgba(28,27,25,0.06), 0 1px 2px rgba(28,27,25,0.04);
+  --shadow-md:       0 4px 16px rgba(28,27,25,0.08), 0 2px 6px rgba(28,27,25,0.05);
+  --shadow-lg:       0 12px 40px rgba(28,27,25,0.1), 0 4px 12px rgba(28,27,25,0.06);
 }
 
 /* ── Reset ── */
@@ -45,9 +63,10 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding: 0 20px;
   min-height: 100vh;
 }
@@ -56,19 +75,19 @@ body {
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 a:hover {
-  color: #fff;
-  text-shadow: 0 0 8px var(--accent-lt);
+  color: var(--accent-dark);
+  opacity: 0.85;
 }
 
 /* ── Animations ── */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -76,9 +95,14 @@ a:hover {
   }
 }
 
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
 main,
 #content {
-  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ── Layout ── */
@@ -87,29 +111,30 @@ main,
   margin: 0 auto;
 }
 
-/* ── Nav ── */
+/* ── Nav / Header ── */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
+  padding: 28px 0;
   border-bottom: 1px solid var(--rule);
   margin-bottom: 20px;
 }
 
 header div h1 {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--ink);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
+  line-height: 1.2;
 }
 
 header div h3 {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 400;
@@ -120,43 +145,42 @@ header div h3 {
 header div p {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--ink-muted);
+  color: var(--ink-faint);
 }
 
 nav {
   background: var(--surface);
-  padding: 10px 24px;
-  border-radius: 30px;
-  border: 1px solid var(--rule);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 22px;
+  border-radius: 40px;
+  border: 1px solid var(--rule-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: inline-flex;
-  gap: 24px;
+  gap: 22px;
   align-items: center;
+  box-shadow: var(--shadow-sm);
 }
 
 nav a {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--ink-muted);
   text-decoration: none;
-  font-weight: 500;
+  padding: 4px 0;
   border-bottom: 2px solid transparent;
-  padding-bottom: 4px;
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 nav a:hover {
   color: var(--ink);
-  text-shadow: none;
+  opacity: 1;
 }
 
 nav a.active {
   color: var(--ink);
   border-bottom-color: var(--accent);
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 /* ── Page Headings ── */
@@ -171,25 +195,24 @@ h1 {
   font-size: clamp(2.4rem, 5vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   font-style: italic;
   color: var(--ink);
 }
 
 h2 {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   font-style: italic;
   color: var(--ink);
 }
 
 h3 {
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  font-style: italic;
   color: var(--ink);
 }
 
@@ -207,14 +230,14 @@ main > .section:first-of-type {
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .section-num {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
   font-weight: 500;
 }
 
@@ -224,20 +247,19 @@ main > .section:first-of-type {
 
 /* ── Cards ── */
 .card {
-  background: var(--surface);
+  background: var(--bg-surface);
   border: 1px solid var(--rule);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 28px;
-  margin-bottom: 24px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  background: var(--surface-hover);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--accent-lt);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--rule-strong);
 }
 
 .card:last-child {
@@ -246,9 +268,10 @@ main > .section:first-of-type {
 
 .card h3 {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  font-weight: 600;
   margin-bottom: 8px;
+  color: var(--ink);
 }
 
 .card h3 a {
@@ -257,15 +280,14 @@ main > .section:first-of-type {
 
 .card h3 a:hover {
   color: var(--accent);
-  text-decoration: none;
-  text-shadow: none;
+  opacity: 1;
 }
 
 .card small {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--accent);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   display: block;
   margin-bottom: 12px;
 }
@@ -273,46 +295,49 @@ main > .section:first-of-type {
 .card p {
   font-size: 0.95rem;
   color: var(--ink-muted);
-  line-height: 1.75;
+  line-height: 1.78;
 }
 
 /* ── Buttons ── */
 .btn {
   display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #000;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
   background: var(--accent);
   padding: 12px 28px;
-  border: 1px solid var(--accent);
-  border-radius: 30px;
+  border: 1.5px solid var(--accent);
+  border-radius: 40px;
   cursor: pointer;
-  font-weight: 600;
   transition: all 0.3s ease;
   text-decoration: none;
-  box-shadow: 0 0 5px #f5f5f5;
+  box-shadow: 0 2px 8px var(--accent-lt);
 }
 
 .btn:hover {
-  background: transparent;
-  color: var(--accent);
-  box-shadow: 0 0 15px #f5f5f5;
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  box-shadow: 0 4px 16px var(--accent-lt);
+  opacity: 1;
+  color: #fff;
 }
 
 /* Outline variant */
 .btn-outline {
   background: transparent;
   color: var(--ink);
-  border-color: var(--rule);
+  border-color: var(--rule-strong);
   box-shadow: none;
 }
 
 .btn-outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: inset 0 0 10px var(--accent-lt);
+  background: var(--accent-lt);
+  box-shadow: none;
+  opacity: 1;
 }
 
 /* ── About Section ── */
@@ -330,7 +355,7 @@ main > .section:first-of-type {
   font-size: 1.05rem;
   color: var(--ink-muted);
   margin-bottom: 20px;
-  line-height: 1.8;
+  line-height: 1.82;
 }
 
 .about-text p strong {
@@ -356,84 +381,85 @@ strong {
   height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--accent);
-  box-shadow: 0 0 20px var(--accent-lt);
-  filter: contrast(1.1) saturate(1.1);
+  border: 3px solid var(--rule-strong);
+  box-shadow: var(--shadow-lg);
+  filter: contrast(1.05) saturate(1.05);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .profile-pic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--accent-lt);
+  transform: scale(1.04);
+  box-shadow: 0 20px 50px rgba(28,27,25,0.14);
 }
 
 .social-links {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   margin-top: 24px;
 }
 
 .social-links a {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--ink);
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 20px;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: 30px;
   padding: 8px 20px;
   display: inline-flex;
   align-items: center;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
 }
 
 .social-links a:hover {
-  background: var(--accent-lt);
-  color: var(--accent);
+  background: var(--accent);
+  color: #fff;
   border-color: var(--accent);
-  box-shadow: 0 4px 12px var(--accent-lt);
-  text-shadow: none;
+  box-shadow: 0 4px 14px var(--accent-lt);
+  opacity: 1;
 }
 
 /* ── Editor-specific ── */
 .editor-container {
-  background: var(--surface);
+  background: var(--bg-surface);
   min-height: 400px;
   padding: 24px;
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.8;
   color: var(--ink);
+  box-shadow: var(--shadow-sm);
 }
 
 .toolbar {
   margin-bottom: 12px;
   padding: 8px;
-  background: var(--surface);
+  background: var(--bg-surface);
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   gap: 6px;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
 }
 
 .toolbar button {
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   font-weight: 500;
   padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--ink-muted);
   transition: all 0.2s ease;
 }
@@ -453,10 +479,10 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink-muted);
 }
 
 input[type="text"],
@@ -466,11 +492,11 @@ select {
   padding: 12px 16px;
   font-family: var(--font-sans);
   font-size: 1rem;
-  background: rgba(0,0,0,0.2);
-  border: 1px solid var(--rule);
+  background: var(--bg-surface);
+  border: 1px solid var(--rule-strong);
   border-radius: 8px;
   color: var(--ink);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 input[type="text"]:focus,
@@ -478,7 +504,7 @@ input[type="date"]:focus,
 select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent-lt);
+  box-shadow: 0 0 0 3px var(--accent-lt);
 }
 
 /* ── Footer ── */
@@ -494,9 +520,9 @@ footer {
 footer,
 footer * {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-muted);
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.07em;
 }
 
 /* ── Article / Detail View ── */
@@ -504,17 +530,17 @@ article h2#detail-title {
   font-family: var(--font-serif);
   font-size: 2.4rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   font-style: italic;
   margin-bottom: 12px;
-  color: var(--accent);
+  color: var(--ink);
 }
 
 article small#detail-date {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
-  color: var(--ink-muted);
+  color: var(--ink-faint);
 }
 
 article #detail-body {
@@ -530,7 +556,7 @@ article #detail-body p {
 
 article #detail-body h3 {
   margin: 2rem 0 1rem;
-  color: var(--accent);
+  color: var(--ink);
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-style: italic;
@@ -542,56 +568,30 @@ article #detail-body a {
 }
 
 article #detail-body a:hover {
-  color: #fff;
+  color: var(--accent-dark);
   border-bottom-color: var(--accent);
+  opacity: 1;
 }
-
-/* ── Hero Section Classes ── */
-/* .hero-tags {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.hero-tags span {
-  font-family: var(--font-mono);
-  font-size: 0.75rem !important;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--surface) !important;
-  color: var(--ink) !important;
-  border: 1px solid var(--rule) !important;
-  padding: 6px 14px !important;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-}
-
-.hero-tags span:hover {
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
-  background: var(--surface-hover) !important;
-  box-shadow: 0 4px 12px var(--accent-lt);
-} */
 
 /* ── Stack tags ── */
 .stack-tag {
   font-family: var(--font-mono);
-  font-size: 0.8rem !important;
-  background: var(--surface) !important;
-  border: 1px solid var(--rule) !important;
-  padding: 6px 14px !important;
+  font-size: 0.75rem !important;
+  background: var(--bg-subtle) !important;
+  border: 1px solid var(--rule-strong) !important;
+  padding: 5px 12px !important;
   border-radius: 6px;
-  color: var(--ink);
-  transition: all 0.3s ease;
+  color: var(--ink-muted);
+  transition: all 0.25s ease;
+  letter-spacing: 0.01em;
 }
+
 .stack-tag:hover {
   border-color: var(--accent) !important;
-  background: var(--surface-hover) !important;
+  background: var(--accent-lt) !important;
   transform: translateY(-2px);
   color: var(--accent);
 }
-
 
 /* Remove inline top-padding to align gap with About Me Section */
 #skills > div:nth-of-type(2) > div:nth-child(1),
@@ -634,7 +634,7 @@ article #detail-body a:hover {
   nav {
     gap: 14px;
     flex-wrap: wrap;
-    border-radius: 12px;
+    border-radius: 14px;
   }
 
   h1 {
@@ -680,7 +680,7 @@ article #detail-body a:hover {
     border-right: none !important;
     padding: 20px 0 !important;
   }
-  
+
   #skills > div:nth-of-type(2) > div:nth-child(2) {
     padding-top: 20px !important;
   }
@@ -715,7 +715,7 @@ article #detail-body a:hover {
 
   .social-links {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
   footer {
@@ -735,8 +735,8 @@ article #detail-body a:hover {
   }
 
   .btn {
-    padding: 12px 20px;
-    font-size: 0.75rem;
+    padding: 11px 22px;
+    font-size: 0.8rem;
   }
 }
 
@@ -747,7 +747,7 @@ article #detail-body a:hover {
   }
 
   header div h1 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   nav {
@@ -755,7 +755,7 @@ article #detail-body a:hover {
   }
 
   nav a {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
   }
 
   .section {
@@ -769,7 +769,7 @@ article #detail-body a:hover {
 
   .social-links a {
     padding: 8px 16px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   footer {
