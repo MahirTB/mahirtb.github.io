@@ -69,6 +69,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                         # Update fields
                         existing_data[i]['title'] = data['title']
                         existing_data[i]['summary'] = data['summary']
+                        existing_data[i]['thumbnail'] = data.get('thumbnail', '')
                         existing_data[i]['content'] = data['content']
                         existing_data[i]['savedAt'] = data.get('savedAt')
                         found = True

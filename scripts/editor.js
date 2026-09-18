@@ -23,6 +23,9 @@ window.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('title').value = item.title;
                 document.getElementById('summary').value = item.summary;
                 document.getElementById('editor').innerHTML = item.content;
+                if (item.thumbnail) {
+                    document.getElementById('selectedThumbnail').value = item.thumbnail;
+                }
                 document.getElementById('status').innerText = "Editing: " + item.title;
 
                 // Disable type switching during edit to avoid complexity
@@ -36,8 +39,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Initialize Toolbar
+    // Initialize Toolbar & Thumbnail Picker
     initToolbar();
+    initThumbnailPicker();
+    updateThumbnailGallery();
 });
 
 function initToolbar() {
@@ -114,10 +119,13 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
     saveBtn.disabled = true;
     saveBtn.innerText = "Saving...";
 
+    const selectedThumb = document.getElementById('selectedThumbnail') ? document.getElementById('selectedThumbnail').value : '';
+
     const payload = {
         type,
         title,
         summary,
+        thumbnail: selectedThumb,
         content,
         savedAt: new Date().toISOString()
     };
@@ -197,6 +205,7 @@ document.getElementById('imageInput').addEventListener('change', async (e) => {
                 const imgTag = `<img src="${data.url}" style="max-width: 100%; height: auto; margin: 10px 0;">`;
                 document.getElementById('editor').focus();
                 document.execCommand('insertHTML', false, imgTag);
+                updateThumbnailGallery();
             } else {
                 alert('Image upload failed');
             }
@@ -209,3 +218,139 @@ document.getElementById('imageInput').addEventListener('change', async (e) => {
     // Reset input so looking for the same file again triggers 'change'
     e.target.value = '';
 });
+
+// ── Thumbnail Picker Logic ──
+let thumbUpdateTimeout = null;
+
+function initThumbnailPicker() {
+    const uploadBtn = document.getElementById('uploadThumbBtn');
+    const fileInput = document.getElementById('thumbFileInput');
+    const removeBtn = document.getElementById('removeThumbBtn');
+    const editor = document.getElementById('editor');
+
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function (event) {
+                const base64String = event.target.result;
+                try {
+                    uploadBtn.disabled = true;
+                    uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 6px;"></i>Uploading...';
+                    const response = await fetch('/upload-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            filename: file.name,
+                            image: base64String
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        document.getElementById('selectedThumbnail').value = data.url;
+                        updateThumbnailGallery();
+                    } else {
+                        alert('Cover image upload failed');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('Error uploading cover image');
+                } finally {
+                    uploadBtn.disabled = false;
+                    uploadBtn.innerHTML = '<i class="fas fa-upload" style="margin-right: 6px;"></i>Upload Custom Thumbnail';
+                    fileInput.value = '';
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    if (removeBtn) {
+        removeBtn.addEventListener('click', () => {
+            document.getElementById('selectedThumbnail').value = '';
+            updateThumbnailGallery();
+        });
+    }
+
+    if (editor) {
+        editor.addEventListener('input', () => {
+            clearTimeout(thumbUpdateTimeout);
+            thumbUpdateTimeout = setTimeout(updateThumbnailGallery, 500);
+        });
+    }
+}
+
+function updateThumbnailGallery() {
+    const editor = document.getElementById('editor');
+    const grid = document.getElementById('thumbnail-grid');
+    const hiddenInput = document.getElementById('selectedThumbnail');
+    const removeBtn = document.getElementById('removeThumbBtn');
+
+    if (!grid || !hiddenInput) return;
+
+    // Collect all unique images from editor content
+    const imgElements = editor ? Array.from(editor.querySelectorAll('img')) : [];
+    const images = [];
+
+    // Add custom/selected thumbnail if already set
+    if (hiddenInput.value && !images.includes(hiddenInput.value)) {
+        images.push(hiddenInput.value);
+    }
+
+    imgElements.forEach(img => {
+        let src = img.getAttribute('src');
+        if (src) {
+            // Clean relative path if needed
+            if (src.startsWith('http://localhost:8000/')) {
+                src = src.replace('http://localhost:8000/', '');
+            } else if (src.startsWith('http://127.0.0.1:8000/')) {
+                src = src.replace('http://127.0.0.1:8000/', '');
+            }
+            if (!images.includes(src)) {
+                images.push(src);
+            }
+        }
+    });
+
+    // If nothing currently selected but we have images in content, auto-select first
+    if (!hiddenInput.value && images.length > 0) {
+        hiddenInput.value = images[0];
+    }
+
+    if (images.length === 0) {
+        grid.innerHTML = '<p class="thumb-empty-msg">No images found in content yet. Upload images in the content editor or upload a custom thumbnail below.</p>';
+        if (removeBtn) removeBtn.style.display = 'none';
+        return;
+    }
+
+    if (removeBtn) {
+        removeBtn.style.display = hiddenInput.value ? 'inline-flex' : 'none';
+    }
+
+    grid.innerHTML = images.map(src => {
+        const isSelected = hiddenInput.value === src;
+        return `
+            <div class="thumb-option ${isSelected ? 'selected' : ''}" data-src="${src}" title="Click to set as thumbnail">
+                <img src="${src}" alt="Thumbnail option" loading="lazy">
+                <div class="thumb-badge"><i class="fas fa-check"></i></div>
+            </div>
+        `;
+    }).join('');
+
+    // Attach click events
+    grid.querySelectorAll('.thumb-option').forEach(el => {
+        el.addEventListener('click', () => {
+            const src = el.getAttribute('data-src');
+            hiddenInput.value = src;
+            grid.querySelectorAll('.thumb-option').forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+            if (removeBtn) removeBtn.style.display = 'inline-flex';
+        });
+    });
+}
+

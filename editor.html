@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css?v=33">
+    <link rel="stylesheet" href="styles/main.css?v=37">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/mtb_logo_trimmed.png">
 </head>
@@ -50,6 +50,22 @@
                     <input type="text" id="summary" placeholder="One sentence summary...">
                 </div>
 
+                <div class="input-group">
+                    <label>Thumbnail / Cover Image</label>
+                    <p class="thumbnail-picker-hint">Select a photo from this project to use as the card thumbnail, or upload a custom cover.</p>
+                    <div id="thumbnail-picker-container" class="thumbnail-picker-container">
+                        <div id="thumbnail-grid" class="thumbnail-grid">
+                            <p class="thumb-empty-msg">No images found in content yet. Upload images in the content editor or upload a custom thumbnail below.</p>
+                        </div>
+                        <div class="thumbnail-actions">
+                            <button type="button" id="uploadThumbBtn" class="btn-secondary"><i class="fas fa-upload" style="margin-right: 6px;"></i>Upload Custom Thumbnail</button>
+                            <button type="button" id="removeThumbBtn" class="btn-secondary" style="display: none; color: #c0392b; border-color: rgba(192, 57, 43, 0.4);"><i class="fas fa-times" style="margin-right: 6px;"></i>Remove Thumbnail</button>
+                            <input type="file" id="thumbFileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <input type="hidden" id="selectedThumbnail" value="">
+                    </div>
+                </div>
+
                 <label>Content</label>
                 <div class="toolbar">
                     <button type="button" onmousedown="event.preventDefault()" data-command="bold"><i
@@ -85,7 +101,7 @@
         </main>
     </div>
 
-    <script src="scripts/editor.js?v=3"></script>
+    <script src="scripts/editor.js?v=4"></script>
 </body>
 
 </html>

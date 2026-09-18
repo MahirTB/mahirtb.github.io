@@ -86,6 +86,7 @@ async function loadContent(type) {
             }
         } else if (container) {
             // Show List
+            container.classList.add('cards-grid');
             if (data.length === 0) {
                 if (isAdmin) {
                     container.innerHTML = '<p>No content yet. Use the <a href="editor">Editor</a> to add some.</p>';
@@ -95,14 +96,35 @@ async function loadContent(type) {
                 return;
             }
 
-            container.innerHTML = data.map((item, index) => `
-        <div class="card">
-          <small>${item.date || ''}</small>
-          <h3><a href="?id=${item.id}">${item.title}</a></h3>
-          <p>${item.summary || ''}</p>
-          <a href="?id=${item.id}" class="btn" style="margin-top: 16px;">Read More &rarr;</a>
-        </div>
-      `).join('');
+            container.innerHTML = data.map((item, index) => {
+                const hasThumbnail = item.thumbnail && item.thumbnail.trim().length > 0;
+                const thumbHtml = hasThumbnail
+                    ? `<img src="${item.thumbnail}" alt="${item.title}" class="card-thumb-img" loading="lazy">`
+                    : `<div class="card-thumb-placeholder">
+                         <i class="fas ${item.type === 'project' ? 'fa-diagram-project' : 'fa-feather-pointed'}"></i>
+                         <span>${item.type === 'project' ? 'Project' : 'Article'}</span>
+                       </div>`;
+
+                const btnLabel = item.type === 'project' ? 'View Project &rarr;' : 'Read Article &rarr;';
+
+                return `
+        <article class="card-item">
+          <a href="?id=${item.id}" class="card-thumb-link" aria-label="${item.title}">
+            <div class="card-thumb-wrapper">
+              ${thumbHtml}
+            </div>
+          </a>
+          <div class="card-body">
+            ${item.date ? `<div class="card-meta"><span class="card-date">${item.date}</span></div>` : ''}
+            <h3 class="card-title"><a href="?id=${item.id}">${item.title}</a></h3>
+            <p class="card-summary">${item.summary || ''}</p>
+            <div class="card-footer">
+              <a href="?id=${item.id}" class="btn">${btnLabel}</a>
+            </div>
+          </div>
+        </article>
+      `;
+            }).join('');
 
             if (detailContainer) detailContainer.style.display = 'none';
         }
